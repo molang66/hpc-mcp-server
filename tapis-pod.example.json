@@ -1,0 +1,30 @@
+{
+  "pod_id": "allinallllm",
+  "description": "All-in-all LLM MCP server with direct HTTP chat endpoint",
+  "command": [],
+  "image": "ghcr.io/<github-owner>/all-in-all-llm:0.1.0",
+  "environment_variables": {
+    "PORT": "8000",
+    "LLM_BACKEND": "deepspeed",
+    "MODEL_ID": "meta-llama/Llama-3.1-8B-Instruct",
+    "HF_HOME": "/models/.cache/huggingface",
+    "HF_LOCAL_FILES_ONLY": "false",
+    "TORCH_DTYPE": "bfloat16",
+    "TENSOR_PARALLEL_SIZE": "1"
+  },
+  "volume_mounts": {},
+  "template_overrides": {},
+  "networking": {
+    "default": {
+      "protocol": "http",
+      "port": 8000
+    }
+  },
+  "resources": {
+    "cpu_request": "4",
+    "cpu_limit": "8",
+    "mem_request": "64Gi",
+    "mem_limit": "96Gi",
+    "gpus": "1"
+  }
+}

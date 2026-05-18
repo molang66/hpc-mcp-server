@@ -1,4 +1,4 @@
-from all_in_all_llm.llama_backend import build_backend
+from hpc_mcp_server.llama_backend import build_backend
 
 
 def main() -> None:

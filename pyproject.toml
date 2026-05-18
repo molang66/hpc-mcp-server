@@ -1,5 +1,5 @@
 [project]
-name = "all-in-all-llm"
+name = "hpc-mcp-server"
 version = "0.1.0"
 description = "Execution-aware LLM MCP server for Tapis Pods."
 readme = "README.md"
@@ -15,7 +15,7 @@ dependencies = [
 ]
 
 [project.scripts]
-all-in-all-llm = "all_in_all_llm.main:run"
+hpc-mcp-server = "hpc_mcp_server.main:run"
 
 [build-system]
 requires = ["uv_build>=0.11.7,<0.12.0"]

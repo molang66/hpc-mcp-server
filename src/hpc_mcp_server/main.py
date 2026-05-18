@@ -7,10 +7,10 @@ from fastapi import FastAPI, HTTPException
 from mcp.server.fastmcp import FastMCP
 from pydantic import BaseModel, Field
 
-from all_in_all_llm.api.health import router as health_router
-from all_in_all_llm.llama_backend import LLMBackend, build_backend
+from hpc_mcp_server.api.health import router as health_router
+from hpc_mcp_server.llama_backend import LLMBackend, build_backend
 
-SERVICE_NAME = "all-in-all-llm"
+SERVICE_NAME = "hpc-mcp-server"
 GPU_MODEL_SCRIPT = os.environ.get(
     "GPU_MODEL_SCRIPT",
     "/work2/09250/molang66/stampede3/GPUModeling25/3D_parallelism_prediction/3D_prediction.py",

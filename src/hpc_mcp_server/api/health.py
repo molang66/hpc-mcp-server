@@ -4,7 +4,7 @@ import os
 
 from fastapi import APIRouter
 
-SERVICE_NAME = "all-in-all-llm"
+SERVICE_NAME = "hpc-mcp-server"
 
 try:
     SERVICE_VERSION = version(SERVICE_NAME)

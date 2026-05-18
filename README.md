@@ -1,4 +1,4 @@
-# All-in-all LLM MCP Service
+# HPC MCP Server
 
 Execution-aware LLM MCP server packaged as an ICICLE/Tapis Python service.
 

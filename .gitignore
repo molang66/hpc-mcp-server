@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.venv/
+models/
+kernel.errors.txt
+chat_client.py
+llama_backend.py
+mcp_server.py
+run.py

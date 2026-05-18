@@ -1,10 +1,10 @@
 schema-version: 1
 
-service-name: all-in-all-llm
+service-name: hpc-mcp-server
 service-version: 0.1.0
-project-name: all-in-all-llm
+project-name: hpc-mcp-server
 service-type: ai
-pod-name: allinallllm
+pod-name: hpcmcpserver
 
 runtime-type: python
 runtime-version: "3.11"

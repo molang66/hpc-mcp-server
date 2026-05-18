@@ -15,7 +15,7 @@ fastest way to verify the service package and HTTP entrypoint.
 ```bash
 cd All_in_all_LLM
 uv sync
-uv run uvicorn all_in_all_llm.main:app --host 127.0.0.1 --port 8000
+uv run uvicorn hpc_mcp_server.main:app --host 127.0.0.1 --port 8000
 ```
 
 In another terminal:
@@ -33,7 +33,7 @@ export HF_TOKEN=your_huggingface_token
 export LLM_BACKEND=deepspeed
 export HF_LOCAL_FILES_ONLY=false
 export TENSOR_PARALLEL_SIZE=1
-uv run uvicorn all_in_all_llm.main:app --host 127.0.0.1 --port 8000
+uv run uvicorn hpc_mcp_server.main:app --host 127.0.0.1 --port 8000
 ```
 
 The first MCP `chat` call will load the model.
@@ -51,8 +51,8 @@ curl -X POST http://127.0.0.1:8000/chat \
 Edit `icicle-service.yaml`:
 
 ```yaml
-project-name: all-in-all-llm
-pod-name: allinallllm
+project-name: hpc-mcp-server
+pod-name: hpcmcpserver
 ```
 
 `pod-name` must be lowercase alphanumeric for Tapis Pods.
@@ -111,7 +111,7 @@ GPU_MODEL_SCRIPT=/path/inside/pod/3D_prediction.py
 
 ```bash
 git add .github/ icicle-service.yaml pyproject.toml uv.lock entrypoint.sh .dockerignore src/ DEPLOY_TAPIS.md
-git commit -m "Deploy all-in-all LLM as ICICLE service"
+git commit -m "Deploy MCP server as ICICLE service"
 git push
 ```
 
@@ -121,7 +121,7 @@ to roll out.
 ## 5. Verify
 
 ```bash
-curl https://<pod-name>.pods.tacc.tapis.io/health
+curl https://hpcmcpserver.pods.tacc.tapis.io/health
 ```
 
 Expected:
@@ -129,7 +129,7 @@ Expected:
 ```json
 {
   "status": "ok",
-  "service": "all-in-all-llm",
+  "service": "hpc-mcp-server",
   "version": "0.1.0"
 }
 ```
@@ -137,13 +137,13 @@ Expected:
 Then connect an MCP Streamable HTTP client to:
 
 ```text
-https://<pod-name>.pods.tacc.tapis.io/mcp
+https://hpcmcpserver.pods.tacc.tapis.io/mcp
 ```
 
 For direct HTTP chat testing:
 
 ```bash
-curl -X POST https://<pod-name>.pods.tacc.tapis.io/chat \
+curl -X POST https://hpcmcpserver.pods.tacc.tapis.io/chat \
   -H "Content-Type: application/json" \
   -d '{"prompt":"What is HPC in one sentence?","max_new_tokens":80}'
 ```

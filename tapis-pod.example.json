@@ -1,8 +1,8 @@
 {
-  "pod_id": "allinallllm",
-  "description": "All-in-all LLM MCP server with direct HTTP chat endpoint",
+  "pod_id": "hpcmcpserver",
+  "description": "LLM MCP server with direct HTTP chat endpoint",
   "command": [],
-  "image": "ghcr.io/<github-owner>/all-in-all-llm:0.1.0",
+  "image": "ghcr.io/<github-owner>/hpc-mcp-server:0.1.0",
   "environment_variables": {
     "PORT": "8000",
     "LLM_BACKEND": "deepspeed",
@@ -12,7 +12,12 @@
     "TORCH_DTYPE": "bfloat16",
     "TENSOR_PARALLEL_SIZE": "1"
   },
-  "volume_mounts": {},
+  "volume_mounts": {
+    "/models": {
+      "type": "tapisvolume",
+      "source_id": "hpcmcpserver-models"
+    }
+  },
   "template_overrides": {},
   "networking": {
     "default": {
